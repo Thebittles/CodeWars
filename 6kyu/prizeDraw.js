@@ -58,8 +58,10 @@ var sortByName = true;
 
   if (st.length == 0) {
     return "No participants"
+    
   } else if (n > nameArr.length) {
     return "Not enough participants"
+
   } else if (sortByName === true){
     console.log("Sort by name ", sortName)
     return  sortName[n -1][0]
