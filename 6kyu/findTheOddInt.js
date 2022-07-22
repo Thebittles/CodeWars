@@ -1,10 +1,12 @@
+
 function findOdd(A) {
   //happy coding!
 
   let memory = {}
   for(let i = 0, n = A.length; i < n; i++){
     if(memory[A[i]]){
-     memory[A[i]] += 1 }
+     memory[A[i]] += 1 
+    }
 
     else 
      memory[A[i]] = 1
