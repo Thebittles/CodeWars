@@ -11,11 +11,9 @@ function twoSum(arr, target) {
 
   for(var i = 0; i < arr.length; i++){
      let diff = target - arr[i]
-
      if(object.hasOwnProperty(diff) && object[diff] !== i){
       return [i, object[diff]];
-     }
-      
+     } 
   }
 
 }
