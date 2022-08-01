@@ -3,41 +3,45 @@
 
 // write the function isAnagram
 var isAnagram = function(test, original) {
-    test = test.toLowerCase()
+    // create hashes for each - compare counts
+    test =  test.toLowerCase()
     original = original.toLowerCase()
-
-    if(test.length > original.length){
+    // Check to see if counts are different - 
+    if (test.length !== original.length){
         return false
     }
 
-    let cache = {}
-    for(let i = 0; i < original.length; i++){
-        cache[original[i]] = 0
-    }
-    
-    for(let i =0; i < test.length; i++){
-        if(!(cache.hasOwnProperty(test[i]))){
-            return false
-        } else if (cache.hasOwnProperty(test[i])){
-            cache[test[i]] += 1
-        }
-    }
-    
+    // Proceed with checking letters
+    let testObj = {}
+    let originalObj = {}
 
-    for(key in cache){
-        if(cache[key] == 0){
+    for(let i = 0; i < test.length; i++){
+        // count[s] ? count[s]++ : count[s] = 1;
+        testObj[test[i]] ? testObj[test[i]]++ : testObj[test[i]] = 1;
+        originalObj[original[i]] ?  originalObj[original[i]]++ :  originalObj[original[i]] = 1;
+    }
+
+
+    for(key in originalObj){
+
+        // If there is not a key in the test obj return false
+        if(!testObj.hasOwnProperty(key)){
+            return false
+            // If they don't have the same amount of letters return false
+        } else if(originalObj[key] !== testObj[key]){
             return false
         }
-    }
-    console.log(cache)
-    return true
 
+    }
+    return true 
 };
 
 
-// console.log(isAnagram("foefet", "toffee")) // True
+ //console.log(isAnagram("foefet", "toffee")) // True
+ //console.log(isAnagram("Buckethead", "DeathCubeK")) // True
+ console.log(isAnagram("syIeWoPmGIFRCQzUok", "FRoDGIPesmoyIWQUCz")) // False syIeWoPmGIFRCQzUok FRoDGIPesmoyIWQUCz
 // console.log(isAnagram("Buckethead", "DeathCubeK")) // True
 // console.log(isAnagram("ound", "round")) // False
 // console.log(isAnagram("apple", "pale")) // False
-console.log(isAnagram("mdshdogzdostzacr", "odazoshsrtocdzgmd")) // False  
-console.log(isAnagram("gxaqhgwjbyicfgbkhk", "fkcxhabghwjbfgqkiyg")) // False  
+//console.log(isAnagram("mdshdogzdostzacr", "odazoshsrtocdzgmd")) // False  
+//console.log(isAnagram("gxaqhgwjbyicfgbkhk", "fkcxhabghwjbfgqkiyg")) // False  
