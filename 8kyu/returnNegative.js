@@ -10,3 +10,5 @@ function makeNegative(num) {
 
 console.log(makeNegative(test))
 console.log(makeNegative(test1))
+
+ 

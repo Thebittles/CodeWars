@@ -1,6 +1,8 @@
 //https://www.codewars.com/kata/529eef7a9194e0cbc1000255/train/javascript
 
 
+// My Solution
+
 // write the function isAnagram
 var isAnagram = function(test, original) {
     // create hashes for each - compare counts
@@ -39,9 +41,14 @@ var isAnagram = function(test, original) {
 
  //console.log(isAnagram("foefet", "toffee")) // True
  //console.log(isAnagram("Buckethead", "DeathCubeK")) // True
- console.log(isAnagram("syIeWoPmGIFRCQzUok", "FRoDGIPesmoyIWQUCz")) // False syIeWoPmGIFRCQzUok FRoDGIPesmoyIWQUCz
-// console.log(isAnagram("Buckethead", "DeathCubeK")) // True
-// console.log(isAnagram("ound", "round")) // False
-// console.log(isAnagram("apple", "pale")) // False
-//console.log(isAnagram("mdshdogzdostzacr", "odazoshsrtocdzgmd")) // False  
-//console.log(isAnagram("gxaqhgwjbyicfgbkhk", "fkcxhabghwjbfgqkiyg")) // False  
+// console.log(isAnagram("syIeWoPmGIFRCQzUok", "FRoDGIPesmoyIWQUCz")) // False syIeWoPmGIFRCQzUok FRoDGIPesmoyIWQUCz
+
+
+// Others solution
+
+// write the function isAnagram
+var isAnagram = function(test, original) {
+    var t = test.toLowerCase().split('').sort().join('');
+    var o = original.toLowerCase().split('').sort().join('');
+    return (t==o)?true:false;
+  };
