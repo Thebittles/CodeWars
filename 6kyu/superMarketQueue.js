@@ -3,7 +3,8 @@
 
 
 function queueTime(customers, n) {
-
+    // Creating an array n tills long, and filling with 0 so for example if n = 3 => [0,0,0]
+    let arr = new Array(n).fill(0)
 
     if (customers.length == 0) {
         // Check for no customers
@@ -11,35 +12,30 @@ function queueTime(customers, n) {
         // When n is one just reduce array - add up all the time
     } else if(n === 1){
         return customers.reduce((a, b) => { return a + b})
-    } 
+    }  
 
-    // Order of queue NEVER changes
 
-    //The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
-    
-    // If more n than customers - return highest value in array
-    if ( customers.length < n){
-        return Math.max(...customers)
+    //Loop through the array of customers
+    for(let i = 0; i < customers.length; i++){
+        // Get the index for the min val in arr. 
+        let index = arr.indexOf(Math.min(...arr))
+        //Take the current lowest value int the arr and add the current customer. 
+        arr[index] += customers[i];
     }
-
-    let total = customers.reduce((a, b) => { return a + b})
-
-    return Math.ceil((total/n))
+    //For loop has finished running meaning out of the tills in arr one has the highest wait time - return that.
+    return Math.max(...arr);
 
   }
 
 
 
- console.log(queueTime([5,3,4], 1))/*  */
+//  console.log(queueTime([5,3,4], 1))/*  */
 
 
- console.log( queueTime([10,2,3,3], 2))/*  */
-// should return 10
-// because here n=2 and the 2nd, 3rd, and 4th people in the 
-// queue finish before the 1st person has finished.
-
-
-queueTime([2,3,10], 2)
-// should return 12
-
-console.log(queueTime([1,2,3,4,5], 100)) // Return 5 
+//  console.log( queueTime([10,2,3,3], 2))/*  */
+ // should return 10
+ // because here n=2 and the 2nd, 3rd, and 4th people in the 
+ // queue finish before the 1st person has finished.
+ 
+ 
+ console.log( queueTime( [ 2, 2, 3, 3, 4, 4 ], 2)) // 9
